@@ -1,11 +1,13 @@
 import copy
 
+
 def read_input(filename):
     grid = []
-    with open (filename, 'r') as f:
+    with open(filename, 'r') as f:
         for line in f:
             grid.append([x for x in line.strip()])
     return grid
+
 
 def find_start(grid):
     flag = False
@@ -16,16 +18,16 @@ def find_start(grid):
                 break
         if flag:
             break
-    
     return i, j
+
 
 def print_grid(grid):
     for g in grid:
         print(''.join(g))
     print('---------------------------------')
 
+
 def find_end(grid, start_x, start_y):
-    
     curr = 'T'
     move = {
         'T': (-1, 0),
@@ -38,7 +40,6 @@ def find_end(grid, start_x, start_y):
 
     x = start_x
     y = start_y
-    
     seen = set()
     # seen.add((x, y, curr))
 
@@ -66,8 +67,8 @@ def find_end(grid, start_x, start_y):
         # print_grid(grid)
         x += move[curr][0]
         y += move[curr][1]
-        
     return grid, seen
+
 
 def check_loop(grid, start_x, start_y):
     curr = 'T'
@@ -105,10 +106,11 @@ def check_loop(grid, start_x, start_y):
         seen.add((x, y, curr))
         x += move[curr][0]
         y += move[curr][1]
-    
+
     # if flag:
     #     print_grid(grid)
     return flag
+
 
 def create_loop(grid, seen_paths, start_x, start_y):
     total = 0
@@ -128,6 +130,7 @@ def calculate_path(grid):
             if grid[i][j] == 'X':
                 total += 1
     return total
+
 
 # grid = read_input('./temp.txt')
 grid = read_input('./input day 6.txt')
