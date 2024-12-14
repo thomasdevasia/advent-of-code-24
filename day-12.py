@@ -89,7 +89,7 @@ def find_corner(r, c, farm, len_row, len_col):
     if bottom and right:
         corner += 1
 
-    # TO DO: check the corners
+    # TODO: check the corners
     # if r-1 < 0 and c-1 < 0:
     #     top_left = farm[r-1][c-1]
     # else:
