@@ -74,7 +74,7 @@ def calculate_safety_factor(matrix):
                     q3 += int(matrix[i][j])
                 else:
                     q4 += int(matrix[i][j])
-    print(q1, q2, q3, q4)
+    # print(q1, q2, q3, q4)
     return q1 * q2 * q3 * q4
 
 
@@ -150,12 +150,17 @@ robots = read_input("./input day 14.txt")
 
 # start = int(sys.argv[1])
 # end = int(sys.argv[2])
-for i in range(6752, 6753):
+lowest_sf = float("inf")
+lowest_n = 0
+# 6752
+for i in range(0, 100000):
     matrix = create_matrix(101, 103)
-    # print_matrix(matrix)
     simulations = simulate(robots, matrix, i)
-    # print('#'*100)
-    # print_matrix(simulations)
-    plot_matrix_graph(simulations, i)
-    matrix_to_image(simulations, i)
-    # print('#'*100)
+    # plot_matrix_graph(simulations, i)
+    # matrix_to_image(simulations, i)
+    safety_factor = calculate_safety_factor(simulations)
+    # print(i)
+    if lowest_sf > safety_factor:
+        lowest_sf = safety_factor
+        lowest_n = i
+print(lowest_sf, lowest_n)
