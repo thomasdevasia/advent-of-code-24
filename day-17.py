@@ -1,6 +1,3 @@
-from copy import deepcopy
-
-
 def read_input(filename):
     result = []
     with open(filename) as f:
